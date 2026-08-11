@@ -1,0 +1,322 @@
+/*
+===========================================================
+        🧠 DEEP LEARNING — FUNDAMENTALS
+===========================================================
+
+Learning Goal:
+Understand the basic building blocks of Deep Learning
+before moving towards LLMs and Agentic AI.
+
+-----------------------------------------------------------
+1. DEEP LEARNING
+-----------------------------------------------------------
+
+Hindi Definition:
+Deep Learning, Machine Learning ki ek branch hai jisme
+Artificial Neural Networks ki multiple layers ka use karke
+data se complex patterns aur representations automatically
+learn kiye jaate hain.
+
+English Definition:
+Deep Learning is a subset of Machine Learning that uses
+multi-layer artificial neural networks to automatically
+learn complex patterns and representations from data.
+
+Important:
+"Deep" ka matlab multiple layers hota hai.
+
+
+-----------------------------------------------------------
+2. AI → ML → DEEP LEARNING
+-----------------------------------------------------------
+
+Artificial Intelligence (AI)
+            ↓
+    Machine Learning (ML)
+            ↓
+      Deep Learning (DL)
+
+AI:
+Artificial Intelligence ek broad field hai jisme machines
+ko human-like intelligent tasks perform karne ki capability
+di jaati hai.
+
+ML:
+Machine Learning AI ka ek major approach hai jisme machines
+data se patterns learn karti hain.
+
+DL:
+Deep Learning ML ka subset hai jo multi-layer neural networks
+ka use karta hai.
+
+
+-----------------------------------------------------------
+3. NEURAL NETWORK
+-----------------------------------------------------------
+
+Hindi Definition:
+Neural Network ek computational model hai jo interconnected
+artificial neurons ko layers mein organize karke data se
+patterns learn karta hai.
+
+English Definition:
+A neural network is a computational model made up of
+interconnected artificial neurons organized into layers
+that learn patterns from data.
+
+Basic Structure:
+
+Input Layer
+     ↓
+Hidden Layer
+     ↓
+Hidden Layer
+     ↓
+Output Layer
+
+
+-----------------------------------------------------------
+4. NEURON
+-----------------------------------------------------------
+
+Hindi Definition:
+Neuron Neural Network ki basic computational unit hai jo
+inputs ko receive karke process karta hai aur output
+generate karta hai.
+
+English Definition:
+An artificial neuron is the basic computational unit of
+a neural network that receives inputs, processes them,
+and produces an output.
+
+Basic Flow:
+
+Input 1 ──┐
+Input 2 ──┼──→ Neuron ──→ Output
+Input 3 ──┘
+
+
+-----------------------------------------------------------
+5. WEIGHT
+-----------------------------------------------------------
+
+Hindi Definition:
+Weight ek learnable numerical parameter hai jo determine
+karta hai ki kisi input ka neuron ke output par kitna
+influence (असर / प्रभाव) hoga.
+
+English Definition:
+A weight is a learnable numerical parameter that determines
+how strongly an input influences the output of a neuron.
+
+Simple Meaning:
+
+Weight = Input ke influence ki strength
+
+Example:
+
+Study Hours  → Weight = 0.8
+Attendance   → Weight = 0.5
+Marks        → Weight = 0.9
+
+Training ke dauran model weights ko adjust karta hai.
+
+
+-----------------------------------------------------------
+6. BIAS
+-----------------------------------------------------------
+
+Hindi Definition:
+Bias ek learnable numerical parameter hai jo neuron ke
+output ko adjust karne mein help karta hai.
+
+English Definition:
+Bias is a learnable parameter that allows a neuron to
+adjust its output independently of the input values.
+
+Basic idea:
+
+Input × Weight + Bias
+
+
+-----------------------------------------------------------
+7. WEIGHTED SUM
+-----------------------------------------------------------
+
+Hindi Definition:
+Weighted Sum woh calculation hai jisme har input ko uske
+corresponding weight se multiply karke sabhi results ko
+add kiya jata hai aur phir bias add kiya jata hai.
+
+English Definition:
+Weighted sum is the calculation obtained by multiplying
+each input by its corresponding weight, adding the results,
+and then adding the bias.
+
+Formula:
+
+z = (x1 × w1) + (x2 × w2) + ... + bias
+
+Example:
+
+Input 1  = 5
+Weight 1 = 2
+
+Input 2  = 3
+Weight 2 = 4
+
+Bias = 1
+
+Calculation:
+
+z = (5 × 2) + (3 × 4) + 1
+z = 10 + 12 + 1
+z = 23
+
+Therefore:
+
+Weighted Sum = 23
+
+
+-----------------------------------------------------------
+8. NEURON KA COMPLETE BASIC FLOW
+-----------------------------------------------------------
+
+Inputs
+   ↓
+Inputs × Weights
+   ↓
+Weighted Sum
+   ↓
+Add Bias
+   ↓
+Activation Function
+   ↓
+Output
+
+Formula:
+
+z = Σ(xᵢ × wᵢ) + b
+
+Where:
+
+x = Input
+w = Weight
+b = Bias
+z = Weighted Sum
+
+
+-----------------------------------------------------------
+9. IMPORTANT TERMS
+-----------------------------------------------------------
+
+Deep Learning:
+Multi-layer neural networks se complex patterns learn karna.
+
+Neural Network:
+Interconnected neurons ka computational model.
+
+Neuron:
+Neural Network ki basic computational unit.
+
+Input:
+Model ko diya gaya data.
+
+Weight:
+Input ke influence ko determine karne wala learnable
+parameter.
+
+Bias:
+Neuron ke output ko adjust karne wala learnable parameter.
+
+Weighted Sum:
+Inputs × Weights + Bias.
+
+Influence:
+Kisi input ka output par असर / प्रभाव.
+
+
+-----------------------------------------------------------
+10. DEEP LEARNING ARCHITECTURES — BASIC AWARENESS
+-----------------------------------------------------------
+
+Common architectures:
+
+1. Feedforward Neural Networks
+2. CNN (Convolutional Neural Network)
+3. RNN (Recurrent Neural Network)
+4. LSTM
+5. GRU
+6. Transformer
+
+Agentic AI ke liye:
+
+CNN       → Basic overview
+RNN       → Basic overview
+LSTM/GRU  → Basic awareness
+Transformer → VERY IMPORTANT
+
+Modern LLMs ke context mein Transformer bahut important hai.
+
+
+===========================================================
+CURRENT PROGRESS
+===========================================================
+
+✅ Deep Learning Definition
+✅ AI → ML → Deep Learning
+✅ Neural Network
+✅ Neuron
+✅ Weight
+✅ Bias
+✅ Weighted Sum
+
+⏳ Next:
+Activation Function
+===========================================================
+*/
+
+
+// =========================================================
+// 💻 PRACTICAL — WEIGHTED SUM
+// =========================================================
+
+/*
+Formula:
+
+Weighted Sum = (Input × Weight) + (Input × Weight) + Bias
+
+Example:
+
+inputs  = [5, 3]
+weights = [2, 4]
+bias    = 1
+
+Expected:
+
+(5 × 2) + (3 × 4) + 1
+= 10 + 12 + 1
+= 23
+*/
+
+
+function calculateWeightedSum(inputs, weights, bias) {
+
+    // TODO:
+    // 1. Har input ko uske corresponding weight se multiply karo.
+    // 2. Sabhi weighted values ko add karo.
+    // 3. Bias add karo.
+    // 4. Final result return karo.
+
+}
+
+
+// Test
+const inputs = [5, 3];
+const weights = [2, 4];
+const bias = 1;
+
+// console.log(calculateWeightedSum(inputs, weights, bias));
+
+// Expected Output:
+// 23
