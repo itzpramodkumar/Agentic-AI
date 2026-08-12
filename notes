@@ -320,3 +320,874 @@ const bias = 1;
 
 // Expected Output:
 // 23
+
+
+
+//  next day
+
+/*
+====================================================================
+                    DEEP LEARNING — NOTES
+                    Agentic AI Preparation
+====================================================================
+
+GOAL:
+These notes cover the Deep Learning fundamentals required for
+understanding LLMs and Agentic AI.
+
+Deep Learning mein hume research-level mathematics nahi karni.
+Focus:
+- Concepts
+- Neural Network working
+- Training basics
+- Transformer tak ka foundation
+
+
+====================================================================
+1. DEEP LEARNING
+====================================================================
+
+Hindi:
+Deep Learning, Machine Learning ka ek subset hai jo artificial
+neural networks ki multiple layers ka use karke data se complex
+patterns learn karta hai.
+
+English:
+Deep Learning is a subset of Machine Learning that uses neural
+networks with multiple layers to learn complex patterns from data.
+
+
+AI
+ ↓
+Machine Learning
+ ↓
+Deep Learning
+ ↓
+Neural Networks
+ ↓
+Transformers
+ ↓
+LLMs
+ ↓
+Generative AI
+ ↓
+Agentic AI
+
+
+====================================================================
+2. NEURAL NETWORK
+====================================================================
+
+Hindi:
+Neural Network ek computational model hai jo interconnected
+neurons/layers ka use karke data se patterns learn karta hai.
+
+Basic Structure:
+
+Input Layer
+     ↓
+Hidden Layer(s)
+     ↓
+Output Layer
+
+
+Example:
+
+Image
+ ↓
+Input Layer
+ ↓
+Hidden Layers
+ ↓
+Output
+ ↓
+Cat / Dog
+
+
+====================================================================
+3. NEURON
+====================================================================
+
+Neuron neural network ka basic computational unit hai.
+
+Neuron generally:
+
+Inputs
+  ↓
+Weights
+  ↓
+Weighted Sum + Bias
+  ↓
+Activation Function
+  ↓
+Output
+
+
+Basic Formula:
+
+z = (x1 × w1) + (x2 × w2) + ... + b
+
+
+Where:
+
+x = Input
+w = Weight
+b = Bias
+z = Weighted Sum
+
+
+====================================================================
+4. INPUT
+====================================================================
+
+Input wo data hai jo model ko diya jata hai.
+
+Example:
+
+Image → Pixel values
+Text  → Tokens
+Audio → Numerical representation
+
+
+Important:
+
+User manually image ke har pixel ki value nahi deta.
+
+Software image ko automatically numerical representation/tensor
+mein convert karta hai.
+
+
+Example:
+
+Image
+ ↓
+Pixels
+ ↓
+Numbers
+ ↓
+Tensor
+ ↓
+Neural Network
+
+
+====================================================================
+5. WEIGHT
+====================================================================
+
+Hindi:
+Weight ek learnable parameter hai jo kisi input ke influence/
+contribution ko control karta hai.
+
+English:
+A weight is a learnable parameter that controls the influence
+of an input on a neuron's output.
+
+Example:
+
+Input  = 10
+Weight = 0.5
+
+Contribution:
+
+10 × 0.5 = 5
+
+
+Important:
+
+Weight training ke during automatically learn/update hota hai.
+
+Weight ↑
+→ Input ka contribution increase ho sakta hai.
+
+Weight ↓
+→ Input ka contribution decrease ho sakta hai.
+
+
+====================================================================
+6. BIAS
+====================================================================
+
+Hindi:
+Bias ek learnable parameter hai jo neuron ke output ko adjust
+ya shift karne mein help karta hai.
+
+English:
+Bias is a learnable parameter that allows a neuron to adjust
+its output independently of the input values.
+
+Formula:
+
+Weighted Sum = Σ(Input × Weight) + Bias
+
+
+Example:
+
+Input  = 5
+Weight = 2
+Bias   = 3
+
+(5 × 2) + 3 = 13
+
+
+Bias bhi training ke during learn/update hota hai.
+
+
+====================================================================
+7. WEIGHTED SUM
+====================================================================
+
+Hindi:
+Weighted Sum mein har input ko corresponding weight se multiply
+karke sab values ko add kiya jata hai, phir bias add kiya jata hai.
+
+English:
+Weighted Sum is the sum of inputs multiplied by their
+corresponding weights, plus the bias.
+
+Formula:
+
+z = Σ(xi × wi) + b
+
+
+Example:
+
+Input 1  = 5
+Weight 1 = 2
+
+Input 2  = 3
+Weight 2 = 4
+
+Bias = 1
+
+z = (5 × 2) + (3 × 4) + 1
+z = 10 + 12 + 1
+z = 23
+
+
+Important:
+
+Weighted Sum final prediction nahi hota.
+
+Weighted Sum
+     ↓
+Activation Function
+     ↓
+Output
+
+
+====================================================================
+8. ACTIVATION FUNCTION
+====================================================================
+
+Hindi:
+Activation Function ek mathematical function hai jo neuron ke
+weighted sum ko transform karke output determine karta hai.
+
+English:
+An activation function transforms the weighted sum of a neuron
+and determines its output.
+
+Main purpose:
+
+Activation functions neural networks mein non-linearity introduce
+karne mein help karti hain.
+
+Non-linearity:
+Complex patterns aur relationships learn karne mein network ko
+help karti hai.
+
+
+Basic Flow:
+
+Input
+ ↓
+Weight × Input
+ ↓
+Weighted Sum + Bias
+ ↓
+Activation Function
+ ↓
+Output
+
+
+Common Activation Functions:
+
+1. ReLU
+2. Sigmoid
+3. Tanh
+4. Softmax
+
+
+====================================================================
+9. ReLU
+====================================================================
+
+Full Form:
+Rectified Linear Unit
+
+Hindi:
+ReLU negative input ko 0 kar deta hai aur positive input ko
+as-it-is return karta hai.
+
+Rule:
+
+Negative → 0
+Positive → Same value
+
+Formula:
+
+ReLU(x) = max(0, x)
+
+
+Examples:
+
+-10 → 0
+-5  → 0
+-1  → 0
+ 0  → 0
+ 2  → 2
+ 5  → 5
+10  → 10
+
+
+JavaScript implementation:
+
+function relu(x) {
+    if (x < 0) {
+        return 0;
+    }
+
+    return x;
+}
+
+
+Important:
+
+ReLU khud Dog/Cat identify nahi karta.
+
+ReLU neural network ke internal layers mein activation provide
+karta hai.
+
+
+Dying ReLU:
+
+Agar neuron repeatedly negative values produce karta rahe,
+toh uski activation 0 reh sakti hai.
+
+Is problem ko Dying ReLU kehte hain.
+
+
+====================================================================
+10. SIGMOID
+====================================================================
+
+Hindi:
+Sigmoid ek activation function hai jo input ko 0 aur 1 ke
+between value mein convert karta hai.
+
+English:
+Sigmoid maps an input value to a value between 0 and 1.
+
+Formula:
+
+sigmoid(x) = 1 / (1 + e^(-x))
+
+
+Examples:
+
+-5 → ~0.006
+ 0 → 0.5
+ 5 → ~0.993
+
+
+Common use:
+
+Binary classification / probability-like output.
+
+
+Examples:
+
+Spam / Not Spam
+Fraud / Not Fraud
+Positive / Negative
+Dog / Not Dog
+
+
+Important:
+
+Sigmoid khud spam/fraud detect nahi karta.
+
+Neural Network
+     ↓
+Sigmoid
+     ↓
+0–1 score
+
+
+====================================================================
+11. TANH
+====================================================================
+
+Full Form:
+Hyperbolic Tangent
+
+Hindi:
+Tanh input ko -1 aur +1 ke between value mein map karta hai.
+
+English:
+Tanh maps input values to a range between -1 and +1.
+
+Range:
+
+-1 ≤ tanh(x) ≤ +1
+
+
+Examples:
+
+-5 → approximately -1
+-2 → approximately -0.96
+ 0 → 0
+ 2 → approximately +0.96
+ 5 → approximately +1
+
+
+Important property:
+
+Negative input → Negative output
+Zero           → 0
+Positive input → Positive output
+
+
+Tanh is zero-centered.
+
+
+Common historical use:
+
+RNN
+LSTM
+GRU
+
+
+====================================================================
+12. SOFTMAX
+====================================================================
+
+Hindi:
+Softmax multiple class ke raw scores/logits ko probability
+distribution mein convert karta hai.
+
+English:
+Softmax converts a set of raw scores/logits into a probability
+distribution whose values sum to 1.
+
+
+Example:
+
+Raw Scores:
+
+Cat  = 2.5
+Dog  = 1.2
+Bird = 0.3
+
+Softmax:
+
+Cat  → 0.70
+Dog  → 0.20
+Bird → 0.10
+
+Total:
+
+0.70 + 0.20 + 0.10 = 1.00
+
+
+Common use:
+
+Multi-class classification.
+
+
+Example:
+
+Image
+ ↓
+Neural Network
+ ↓
+Final Layer
+ ↓
+Softmax
+ ↓
+Cat   = 70%
+Dog   = 20%
+Bird  = 10%
+ ↓
+Prediction = Cat
+
+
+Important:
+
+Softmax probability distribution provide karta hai.
+Final decision application/model logic ke through hota hai.
+
+
+====================================================================
+13. RNN
+====================================================================
+
+Full Form:
+Recurrent Neural Network
+
+Hindi:
+RNN ek neural network architecture hai jo sequential data ko
+process karne ke liye designed hai aur previous information ko
+hidden state ke through carry karta hai.
+
+Common historical uses:
+
+- Text processing
+- Speech recognition
+- Time-series
+
+
+Example:
+
+I → am → learning → AI
+
+RNN sequence ko order ke saath process karta hai.
+
+
+====================================================================
+14. LSTM
+====================================================================
+
+Full Form:
+Long Short-Term Memory
+
+Hindi:
+LSTM RNN family ka architecture hai jo long-term dependencies
+ko better handle karne ke liye designed hai.
+
+Important concepts:
+
+- Cell State
+- Forget Gate
+- Input Gate
+- Output Gate
+
+
+LSTM ko RNN ki long-term dependency limitations ko address
+karne ke liye develop kiya gaya.
+
+
+====================================================================
+15. GRU
+====================================================================
+
+Full Form:
+Gated Recurrent Unit
+
+Hindi:
+GRU ek gated recurrent architecture hai jo sequence processing
+ke liye simpler gating mechanism use karta hai.
+
+Important concepts:
+
+- Update Gate
+- Reset Gate
+
+
+GRU ko LSTM ka comparatively simpler alternative samjha ja
+sakta hai.
+
+
+====================================================================
+16. NEURAL NETWORK TYPES
+====================================================================
+
+Major Neural Network types:
+
+1. Feedforward Neural Network
+2. CNN
+3. RNN
+4. LSTM
+5. GRU
+6. Autoencoder
+7. GAN
+8. Transformer
+
+
+Agentic AI ke liye priority:
+
+RNN / LSTM / GRU
+→ Overview
+
+CNN
+→ Overview
+
+Autoencoder / GAN
+→ Awareness
+
+Transformer
+→ VERY IMPORTANT
+
+
+====================================================================
+17. TRANSFORMER
+====================================================================
+
+Transformer modern LLMs ka fundamental architecture hai.
+
+High-level flow:
+
+Text
+ ↓
+Tokenization
+ ↓
+Tokens
+ ↓
+Embeddings
+ ↓
+Transformer
+ ↓
+LLM
+ ↓
+Generated Output
+
+
+Important Transformer concepts:
+
+- Token
+- Embedding
+- Attention
+- Self-Attention
+- Multi-Head Attention
+- Positional Information
+- Feed Forward Network
+- Transformer Block
+
+
+Agentic AI ke liye Transformer ko Deep Learning ke baaki
+architectures se zyada depth mein padhna hai.
+
+
+====================================================================
+18. LOSS FUNCTION
+====================================================================
+
+Hindi:
+Loss Function measure karta hai ki model ki prediction actual
+target se kitni different/wrong hai.
+
+English:
+A loss function measures the difference between a model's
+prediction and the actual target.
+
+
+Simple meaning:
+
+Loss = Prediction ki mistake ka measurement.
+
+
+Example:
+
+Actual:
+Dog = 1
+
+Prediction:
+Dog = 0.90
+
+→ Relatively small loss
+
+
+Prediction:
+Dog = 0.10
+
+→ Relatively large loss
+
+
+Training Goal:
+
+Minimize Loss.
+
+
+Basic Training Flow:
+
+Input
+ ↓
+Neural Network
+ ↓
+Prediction
+ ↓
+Loss Function
+ ↓
+Loss
+
+
+Common Loss Functions:
+
+1. MSE
+   → Regression
+
+2. Binary Cross-Entropy
+   → Binary Classification
+
+3. Categorical Cross-Entropy
+   → Multi-Class Classification
+
+
+====================================================================
+19. GRADIENT
+====================================================================
+
+Hindi:
+Gradient batata hai ki loss model ke kisi parameter (jaise
+weight) ko change karne par kis direction mein aur kitni
+rate se change ho raha hai.
+
+English:
+Gradient tells how the loss changes with respect to a model
+parameter such as a weight.
+
+
+Simple:
+
+Gradient
+ ↓
+Loss kis direction mein change ho raha hai?
+ +
+Kitni tezi se change ho raha hai?
+
+
+Mathematical representation:
+
+∂Loss / ∂Weight
+
+
+Important:
+
+Gradient khud weight update nahi karta.
+
+Gradient information provide karta hai.
+
+Gradient
+ ↓
+Gradient Descent
+ ↓
+Parameter Update
+
+
+Example:
+
+Positive Gradient
+→ Weight increase karne se loss increase hone ki direction.
+
+Negative Gradient
+→ Weight increase karne se loss decrease hone ki direction.
+
+
+Gradient Descent generally gradient ke opposite direction mein
+move karta hai taaki loss minimize ho.
+
+
+====================================================================
+20. CURRENT LEARNING FLOW
+====================================================================
+
+Ab tak:
+
+Input
+ ↓
+Weights + Bias
+ ↓
+Weighted Sum
+ ↓
+Activation Function
+ ↓
+Prediction
+ ↓
+Loss
+ ↓
+Gradient
+ ↓
+Gradient Descent
+ ↓
+Backpropagation
+ ↓
+Update Weights/Bias
+ ↓
+Better Prediction
+
+
+Next Topics:
+
+Gradient Descent
+ ↓
+Backpropagation
+ ↓
+Parameter Updates
+ ↓
+Training
+ ↓
+Inference
+
+
+====================================================================
+21. IMPORTANT FOR AGENTIC AI
+====================================================================
+
+Deep Learning mein Agentic AI ke liye:
+
+MUST UNDERSTAND:
+
+✓ Neural Network
+✓ Neuron
+✓ Weight
+✓ Bias
+✓ Weighted Sum
+✓ Activation Functions
+✓ Loss
+✓ Gradient
+✓ Gradient Descent
+✓ Backpropagation
+✓ Training
+✓ Inference
+✓ Parameters
+✓ Hyperparameters
+✓ Transformer
+
+
+OVERVIEW:
+
+→ CNN
+→ RNN
+→ LSTM
+→ GRU
+→ Autoencoder
+→ GAN
+
+
+DEEP FOCUS:
+
+→ Transformer
+→ LLM
+→ Attention
+→ Self-Attention
+
+
+Goal:
+
+Deep Learning Researcher banna nahi hai.
+
+Goal:
+
+Agentic AI Engineer ke liye Deep Learning ka strong foundation
+banana hai.
+
+
+====================================================================
+                        END
+====================================================================
+*/
+
+
+
+
+
